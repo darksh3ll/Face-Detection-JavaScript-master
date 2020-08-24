@@ -2,7 +2,6 @@
 const video = document.getElementById('cam')
 const face = document.getElementById('face')
 
-// 002 - Load models for Face Detection and Face Expression
 Promise.all(
   [
     faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
@@ -12,7 +11,6 @@ Promise.all(
 
 async function startvideo () {
   console.info('Models loaded, now I will access to WebCam')
-  // 003 - Access to Cam and display it on video DIV
   const stream = await navigator.mediaDevices.getUserMedia({
     video: true
   })
@@ -32,9 +30,7 @@ const statusIcons = {
 }
 
 function detectExpression () {
-  // 005 - Set the default Emoji
   face.innerHTML = statusIcons.default
-  // 006 - setInterval to detect face/espression periodically (every 500 milliseconds)
   const milliseconds = 500
   setInterval(async () => {
     // 007 - Wait to detect face with Expression
@@ -46,7 +42,6 @@ function detectExpression () {
       // 009 - walk through all faces detected
       detection.forEach(element => {
         /**
-         * 010 - each face element has a expressions attribute
          * for example:
          * neutral: 0.33032259345054626
          * happy: 0.0004914478631690145
@@ -65,17 +60,14 @@ function detectExpression () {
             valueStatus = value
           }
         }
-        // 011 - once we have the highest scored expression (status) we display the right Emoji
         face.innerHTML = statusIcons[status]
       })
     } else {
       console.log('No Faces')
-      // face.innerHTML = statusIcons.default;
     }
   }, milliseconds)
 }
 
-// 012 - Add a listener once the Video is played
 video.addEventListener('playing', () => {
   detectExpression()
 })
