@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Emoji Expression Controller</title>
+  <!-- 001 - include a style.css -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- 002 - include face-api.min.js -->
+  <script defer src="face-api.min.js"></script>
+  <!-- 003 - include our script -->
+  <script defer src="./script.js"></script>
+  <style>
+    body {
+      margin: 0px;
+      padding: 0px;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      font-size: 48px;
+      font-weight: 800;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+    .content {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+    #face {
+      font-size: 128px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">Emoji Expression Controller</div>
+  <div class="content">
+    <!-- 004 - define a tag for video -->
+    <video id="cam" width="800" height="600" autoplay playsinline muted></video>
+    <!-- 005 - define a div where to place the emoji -->
+    <div id="face"></div>
+  </div>
+</body>
+
+</html>
